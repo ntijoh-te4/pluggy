@@ -1,0 +1,8 @@
+<h1>Fruits.new (/fruits/new)</h1>
+
+<form action="/fruits/" method="post" enctype="multipart/form-data">
+	<input type="text" name="name" />
+	<input type="text" name="tastiness" />
+	<input type="file" name="file" />
+	<button type=submit>Create Fruit</button>
+</form>

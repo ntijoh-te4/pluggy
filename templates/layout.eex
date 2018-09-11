@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome to Pluggy</title>
+	<link rel="stylesheet" type="text/css" href="/pluggy.css">
+</head>
+<body>
+	<%= template %>
+</body>
+</html>
