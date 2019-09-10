@@ -16,7 +16,7 @@ defmodule Pluggy.MixProject do
     [
       app: :pluggy, #eller er applikations namn
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.9.1",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -34,11 +34,11 @@ defmodule Pluggy.MixProject do
   # Run "mix help deps" to learn about dependencies.
   def deps do
     [
-      {:cowboy, "~> 2.0"}, #webbserver
-      {:plug, "~> 1.0"},   #för att bearbeta http-requests från cowboy
+      {:plug_cowboy, "~> 2.0"},
       {:postgrex, "~> 0.13.5"},
       {:poolboy, "1.5.1"},
-      {:bcrypt_elixir, "~> 1.0"} #för hashning av lösenord
+      {:bcrypt_elixir, "~> 1.0"}, #för hashning av lösenord
+      {:slime, "~> 1.2"} #om man vill använda slime
     ]
   end
 end
@@ -90,7 +90,7 @@ defmodule Pluggy.Supervisor do
 
   def init(:ok) do
     children = [
-      Plug.Adapters.Cowboy2.child_spec(
+      Plug.Adapters.Cowboy.child_spec(
         scheme: :http,
         plug: Pluggy.Router,
         options: [port: 3000]),
@@ -190,9 +190,11 @@ defmodule Pluggy.FruitController do
       _   -> User.get(session_user)
     end
 
-    send_resp(conn, 200, render("fruits/index", fruits: Fruit.all(), user: current_user))
+    #srender använder slime
+    send_resp(conn, 200, srender("fruits/index", fruits: Fruit.all(), user: current_user))
   end
 
+  #render använder eex
   def new(conn),      do: send_resp(conn, 200, render("fruits/new", []))
   def show(conn, id), do: send_resp(conn, 200, render("fruits/show", fruit: Fruit.get(id)))
   def edit(conn, id), do: send_resp(conn, 200, render("fruits/edit", fruit: Fruit.get(id)))
@@ -350,10 +352,26 @@ end
 
 ### lib/pluggy/template.ex
 
-Renderar eex-filer i templates-mappen. Gör det även möjligt att använda en layout-fil med gemensam html.
+Renderar slime eller eex-filer i templates-mappen. Gör det även möjligt att använda en layout-fil med gemensam html.
 
 ```elixir
 defmodule Pluggy.Template do
+
+  #slime
+  def srender(file, data \\ [], layout \\ true) do
+    {:ok, template} = File.read("templates/#{file}.slime")
+
+    case layout do
+      true ->
+        {:ok, layout} = File.read("templates/layout.slime")
+        Slime.render(layout, template: Slime.render(template, data))
+
+      false ->
+        Slime.render(template, data)
+    end
+  end
+
+  #eex
   def render(file, data \\ [], layout \\ true) do
   	case layout do
     	true -> 

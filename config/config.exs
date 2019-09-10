@@ -6,7 +6,8 @@ config :pluggy,
   db: [
     pool: DBConnection.Poolboy,
     pool_size: 20,
-    host: "localhost", # or address
+    # or address
+    host: "localhost",
     database: "postgres",
     username: "postgres",
     password: "docker"

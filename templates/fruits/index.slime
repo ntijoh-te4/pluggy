@@ -1,0 +1,21 @@
+h1 Fruits.index (/fruits)
+
+= if user do
+	form action="/users/logout" method="post"
+		button type="submit" Log Out
+- else
+    form action="/users/login" method="post"
+        label for="username" Username
+        input type="text" name="username" id="username"
+        label for="password" Password
+        input type="password" name="pwd" id="password"
+        button type="submit" Log In
+
+ul
+  = for fruit <- fruits do
+    li
+      a href="/fruits/#{fruit.id}" #{fruit.name} - #{fruit.tastiness}
+
+a href="/fruits/new" Add new fruit
+
+
