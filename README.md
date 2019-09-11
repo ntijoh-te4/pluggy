@@ -4,7 +4,71 @@ Eftersom Servy innehåller en del svårfixade buggar byggde jag en skelettapplik
 
 Pluggy följer samma generella upplägg som Servy, men med andra komponenter.
 
-## Konfigurering
+## Konfigurering och installation av dependencies
+
+### Docker
+
+Vi kommer köra vår Postgres databas-server i en docker.
+
+Skapa ett konto på [https://hub.docker.com/](https://hub.docker.com/) och ladda ner och installera [docker-desktop för mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac).
+
+OBS: Om du startar om din dator måste du eventuellt starta docker-desktop-applikationen igen (beroende på vilka inställningar du valde när du installerade den).
+
+### Postgres
+
+#### Installation
+
+För att hämta docker-imagen från docker hub: `docker pull postgres`
+
+#### Starta
+
+När docker-imagen är nedladad kan du starta containern genom
+
+`docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres`
+
+Följande växlar skickades till `docker run`:
+
+* `--rm*`: Tar bort containern när vi är klara med den. Detta sparar diskutrymme (speciellt om vi kör många olika containers)
+
+- `-- name`: namnet på containern. Används för att identifera den. Bra att veta om man t.ex måste stoppa containern.
+- `-e`: Skicka vidare miljövariablen `POSTGRES_PASSWORD` med värdet `docker` till containern. Detta sätter superuser lösenordet för Postgres. 
+- `-d`: Startar containern i bakgrunden (låter oss fortsätta skriva nya kommandon i samma terminalfönster)
+- `-p`: Kopplar port 5432 på localhost till port 5432 i containern. Port 5432 är Postgres standardport, vilket innebär att vi inte behöver konfigurera eventuella verktyg för att prata med postgres mer än absolut nödvändigt.
+- `-v`: Mounta `/var/lib/postgresql/data` i containern till `$HOME/docker/volumes/postgres` på host-datorn. Detta så att postgresdatabasen överlever även när containern tas bort.
+
+#### PSQL
+
+PSQL är ett program som låter oss koppla upp mot postgres-databas-servrar.
+
+Installation: 
+
+````zsh
+brew install libpq
+echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+````
+
+Koppla upp mot databasservern:
+
+````zsh
+psql -h localhost -U postgres -d postgres
+````
+
+Följande växlar skickades till psql:
+
+* `-h`: Host (kan även vara en ip-adress eller hostname)
+* `-U`: User- namnet på användaren vi vill logga in som
+* `-d`Database - namnet på databasen vi vill koppla upp oss mot
+
+Ange sen lösenordet (`docker`) eller vad som sattes i `docker run` enligt ovan.
+
+I psql kan du använda `help` eller `\?` för att få fram hjälp. `\q` stänger ner psql.
+
+Du kan även använda vanliga SQL-kommandon som t.ex `CREATE TABLE ...` eller `SELECT * FROM ...`
+
+`\d` listar tabellerna `\d+ tabellens-namn` visar tabellens schema.
+
+## Filer och arkitektur
 
 ### mix.exs
 
