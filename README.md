@@ -68,6 +68,10 @@ Du kan även använda vanliga SQL-kommandon som t.ex `CREATE TABLE ...` eller `S
 
 `\d` listar tabellerna `\d+ tabellens-namn` visar tabellens schema.
 
+### Seeding av databasen
+
+I `lib/mix/seed.ex` finns ett mix-script för att nollställa och seeda databasen. Kör `mix seed` för att köra scriptet.
+
 ## Filer och arkitektur
 
 ### mix.exs
