@@ -1,8 +1,12 @@
 defmodule Pluggy.Router do
   use Plug.Router
+  use Plug.Debugger
+
 
   alias Pluggy.FruitController
   alias Pluggy.UserController
+
+
 
   plug(Plug.Static, at: "/", from: :pluggy)
   plug(:put_secret_key_base)
