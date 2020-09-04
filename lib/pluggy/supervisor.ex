@@ -1,7 +1,7 @@
 defmodule Pluggy.Supervisor do
   use Supervisor
 
-  def start_link do
+  def start_link(_init_args) do
     IO.puts("Starting THE supervisor...")
     Supervisor.start_link(__MODULE__, :ok, name: __MODULE__)
   end

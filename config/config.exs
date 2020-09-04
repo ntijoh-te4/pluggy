@@ -4,8 +4,8 @@ use Mix.Config
 
 config :pluggy,
   db: [
-    pool: DBConnection.Poolboy,
-    pool_size: 20,
+    pool: DBConnection.ConnectionPool,
+    pool_size: 4,
     # or address
     host: "localhost",
     database: "postgres",

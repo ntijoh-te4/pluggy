@@ -3,6 +3,6 @@ defmodule Pluggy do
 
   def start(_type, _args) do
     IO.puts("Starting the application...")
-    Pluggy.Supervisor.start_link()
+    Pluggy.Supervisor.start_link({})
   end
 end
