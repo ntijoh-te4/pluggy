@@ -90,9 +90,9 @@ Renderar slime eller eex-filer i templates-mappen. Gör det även möjligt att a
 
 ### Första gången: 
 
-1 Se till att docker desktop är igång
-2 Starta postgres docker enligt ovan
-3 `mix deps.get`
+1. Se till att docker desktop är igång
+2. Starta postgres docker enligt ovan
+3. `mix deps.get`
 
 ### Seeda databasen
 
