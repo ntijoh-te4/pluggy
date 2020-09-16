@@ -96,11 +96,11 @@ Här lägger ni de filer webbläsaren behöver ha åtkomst till, t.ex css, bilde
 
 #### Gruppledare: 
 
-S kapa nya repot från template på itggot-TE4 organisationen: 
+Skapa nya repot från template på itggot-TE4 organisationen: 
 `gh repo create -p itggot-TE4/pluggy itggot-TE4/<ditt-lag-namn>`
 
 #### Gruppmedlem
-Klona repot som din gruppledare skapade med: gh repo clone itggot-TE4/<ditt-lag-namn>`
+Klona repot som din gruppledare skapade med: `gh repo clone itggot-TE4/<ditt-lag-namn>`
 
 ### Samtliga
 
