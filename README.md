@@ -94,8 +94,16 @@ Här lägger ni de filer webbläsaren behöver ha åtkomst till, t.ex css, bilde
 
 ### Första gången: 
 
-0a. Om du är gruppledare skapa nya repot från template på itggot-TE4 organisationen: gh repo create -p itggot-TE4/pluggy itggot-TE4/<ditt-lag-namn>
-0b. Annars ska du clona repot som din gruppledare skapade med: gh repo clone itggot-TE4/<ditt-lag-namn>
+#### Gruppledare: 
+
+S kapa nya repot från template på itggot-TE4 organisationen: 
+`gh repo create -p itggot-TE4/pluggy itggot-TE4/<ditt-lag-namn>`
+
+#### Gruppmedlem
+Klona repot som din gruppledare skapade med: gh repo clone itggot-TE4/<ditt-lag-namn>`
+
+### Samtliga
+
 1. Se till att docker desktop är igång
 2. Starta postgres docker enligt ovan
 3. `mix deps.get`
