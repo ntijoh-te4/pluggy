@@ -90,6 +90,7 @@ Renderar slime eller eex-filer i templates-mappen. Gör det även möjligt att a
 
 ### Första gången: 
 
+0. Ladda ner och packa upp filerna i lämplig mapp: https://github.com/itggot-TE4/pluggy/archive/master.zip
 1. Se till att docker desktop är igång
 2. Starta postgres docker enligt ovan
 3. `mix deps.get`
