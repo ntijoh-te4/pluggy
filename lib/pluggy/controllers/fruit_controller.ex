@@ -16,9 +16,11 @@ defmodule Pluggy.FruitController do
         _ -> User.get(session_user)
       end
 
+    #srender använder slime
     send_resp(conn, 200, srender("fruits/index", fruits: Fruit.all(), user: current_user))
   end
 
+  #render använder eex
   def new(conn), do: send_resp(conn, 200, render("fruits/new", []))
   def show(conn, id), do: send_resp(conn, 200, render("fruits/show", fruit: Fruit.get(id)))
   def edit(conn, id), do: send_resp(conn, 200, render("fruits/edit", fruit: Fruit.get(id)))
@@ -27,7 +29,7 @@ defmodule Pluggy.FruitController do
     Fruit.create(params)
     case params["file"] do
       nil -> IO.puts("No file uploaded")  #do nothing
-        # move uploaded file from tmp-folder (might want to first check that a file was uploaded)
+        # move uploaded file from tmp-folder
       _  -> File.rename(params["file"].path, "priv/static/uploads/#{params["file"].filename}")
     end
     redirect(conn, "/fruits")
