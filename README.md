@@ -94,7 +94,8 @@ Här lägger ni de filer webbläsaren behöver ha åtkomst till, t.ex css, bilde
 
 ### Första gången: 
 
-0. Använd template-funktionen i GitHub för att kopiera projektet
+0a. Om du är gruppledare skapa nya repot från template på itggot-TE4 organisationen: gh repo create -p itggot-TE4/pluggy itggot-TE4/<ditt-lag-namn>
+0b. Annars ska du clona repot som din gruppledare skapade med: gh repo clone itggot-TE4/<ditt-lag-namn>
 1. Se till att docker desktop är igång
 2. Starta postgres docker enligt ovan
 3. `mix deps.get`
