@@ -86,6 +86,10 @@ Pratar med databasen, skapar structs, kan även innehålla andra relevanta funkt
 
 Renderar slime eller eex-filer i templates-mappen. Gör det även möjligt att använda en layout-fil med gemensam html.
 
+### priv/static/*
+
+Här lägger ni de filer webbläsaren behöver ha åtkomst till, t.ex css, bilder, js. Observera att när ni länkar in filen i er template inte ska ange `/priv/static/filensnamn.css` som sökväg utan enbart `/filensnamn.css`. 
+
 ## Uppstart
 
 ### Första gången: 
@@ -101,4 +105,7 @@ I `lib/mix/seed.ex` finns ett mix-script för att nollställa och seeda database
 
 ### Starta servern
 
-`iex -S mix` eller `mix run --no-halt`
+1. `iex -S mix` eller `mix run --no-halt`
+2. Surfa till http://localhost:3000 (eftersom det inte finns nån route för `/` i `router.ex` kan det vara mer givande att surfa till `http://localhost:3000/fruits`
+
+
