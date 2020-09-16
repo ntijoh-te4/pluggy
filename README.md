@@ -106,6 +106,6 @@ I `lib/mix/seed.ex` finns ett mix-script för att nollställa och seeda database
 ### Starta servern
 
 1. `iex -S mix` eller `mix run --no-halt`
-2. Surfa till http://localhost:3000 (eftersom det inte finns nån route för `/` i `router.ex` kan det vara mer givande att surfa till `http://localhost:3000/fruits`
+2. Surfa till http://localhost:3000 (eftersom det inte finns nån route för `/` i `router.ex` kan det vara mer givande att surfa till http://localhost:3000/fruits
 
 
