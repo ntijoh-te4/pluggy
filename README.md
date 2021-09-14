@@ -44,7 +44,7 @@ Installation:
 
 ````zsh
 brew install libpq
-echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="/opt/homebrew/opt/libpq/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 ````
 
