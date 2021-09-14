@@ -96,12 +96,12 @@ Här lägger ni de filer webbläsaren behöver ha åtkomst till, t.ex css, bilde
 
 #### Gruppledare: 
 
-1. Skapa nya repot från template på itggot-TE4 organisationen: `gh repo create -p itggot-TE4/pluggy itggot-TE4/<ditt-lag-namn>`
+1. Skapa nya repot från template på itggot-TE4 organisationen: `gh repo create -p ntijoh-TE4/pluggy ntijoh-TE4/<ditt-lag-namn>`
 2. `git pull origin master`
 3. `git branch -u origin/master`
 
 #### Gruppmedlem:
-Klona repot som din gruppledare skapade med: `gh repo clone itggot-TE4/<ditt-lag-namn>`
+Klona repot som din gruppledare skapade med: `gh repo clone ntijoh-TE4/<ditt-lag-namn>`
 
 ### Samtliga
 
