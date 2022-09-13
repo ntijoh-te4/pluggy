@@ -70,23 +70,35 @@ Du kan även använda vanliga SQL-kommandon som t.ex `CREATE TABLE ...` eller `S
 
 ## Filer och arkitektur
 
-### lib/pluggy/router.ex
+Pluggy använder sig av en [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)-arkitektur med en router.
+
+### Router
+
+Finns i `lib/pluggy/router.ex`
 
 hanterar http-requests och skickar dem vidare till relevant controller
 
-### lib/pluggy/controllers/*.ex
+### Controllers
 
-Tar emot data från routern, innehåller logik för validering, etc. Pratar med databasen via "models", och skickar relevant data till Template för rendering till webbläsaren
+Finns i `lib/pluggy/controllers/<<resurs>>.ex`
 
-### lib/pluggy/models/*.ex
+Tar emot data från routern, innehåller logik för validering, etc. Pratar med Models (som pratar med databasen), och skickar relevant data till View för rendering till webbläsaren
+
+### Models
+
+Finns i `lib/pluggy/models/<<resurs>>.ex`
 
 Pratar med databasen, skapar structs, kan även innehålla andra relevanta funktioner
 
-### lib/pluggy/template.ex
+### Views
 
-Renderar slime eller eex-filer i templates-mappen. Gör det även möjligt att använda en layout-fil med gemensam html.
+Finns i `lib/pluggy/templates/<<resurs>>/*.(eex|slime)`
 
-### priv/static/*
+Renderar [slime](https://github.com/slime-lang/slime) eller eex-filer i templates-mappen. Gör det även möjligt att använda en layout-fil med gemensam html.
+
+### Statiska filer
+
+Ska ligga i `priv/static/*`
 
 Här lägger ni de filer webbläsaren behöver ha åtkomst till, t.ex css, bilder, js. Observera att när ni länkar in filen i er template inte ska ange `/priv/static/filensnamn.css` som sökväg utan enbart `/filensnamn.css`. 
 
