@@ -4,8 +4,8 @@ defmodule Pluggy.MixProject do
   def project do
     [
       app: :pluggy,
-      version: "0.3.0",
-      elixir: "~> 1.12.3",
+      version: "0.4.0",
+      elixir: "~> 1.14.0",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -24,9 +24,9 @@ defmodule Pluggy.MixProject do
   def deps do
     [
       {:plug_cowboy, "~> 2.5.2"},
-      {:postgrex, "~> 0.15.5"},
-      {:bcrypt_elixir, "~> 2.3.0"},
-      {:slime, "~> 1.2.1"}
+      {:postgrex, "~> 0.16.4"},
+      {:bcrypt_elixir, "~> 3.0.1"},
+      {:slime, "~> 1.3.0"}
     ]
   end
 end
