@@ -108,13 +108,13 @@ Här lägger ni de filer webbläsaren behöver ha åtkomst till, t.ex css, bilde
 
 #### Gruppledare: 
 
-1. Skapa nya repot från template på itggot-TE4 organisationen: `gh repo create ntijoh-te4/<pluggy-ditt-lag-namn> --template="https://github.com/ntijoh-te4/pluggy" --internal --clone`
+1. Skapa nya repot från template: `gh repo create <pluggy-ditt-lag-namn> --template="https://github.com/ntijoh-te4/pluggy" --clone`
 2. Gå in på settings på det nya repositoriet och lägg till ditt team under collaborators
 3. `git pull origin master`
 4. `git branch -u origin/master`
 
 #### Gruppmedlem:
-Klona repot som din gruppledare skapade med: `gh repo clone ntijoh-TE4/<pluggy-ditt-lag-namn>`
+Klona repot som din gruppledare skapade med: `gh repo clone <GH REPO "URL">`
 
 ### Samtliga
 
