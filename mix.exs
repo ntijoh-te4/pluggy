@@ -14,7 +14,7 @@ defmodule Pluggy.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      applications: [:plug_cowboy, :plug, :postgrex],
+      applications: [:plug_cowboy, :plug, :postgrex, :slime],
       extra_applications: [:logger],
       mod: {Pluggy, []}
     ]

@@ -3,7 +3,7 @@ defmodule Pluggy.FruitController do
 
   alias Pluggy.Fruit
   alias Pluggy.User
-  import Pluggy.Template, only: [render: 2, ]
+  import Pluggy.Template, only: [render: 2, srender: 2]
   import Plug.Conn, only: [send_resp: 3]
 
   def index(conn) do
@@ -17,7 +17,7 @@ defmodule Pluggy.FruitController do
       end
 
     #srender använder slime
-    send_resp(conn, 200, render("fruits/index", fruits: Fruit.all(), user: current_user))
+    send_resp(conn, 200, srender("fruits/index", fruits: Fruit.all(), user: current_user))
   end
 
   #render använder eex
