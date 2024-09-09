@@ -14,8 +14,7 @@ defmodule Pluggy.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      applications: [:plug_cowboy, :plug, :postgrex],
-      extra_applications: [:logger],
+      extra_applications: [:logger, :plug_cowboy, :plug, :postgrex],
       mod: {Pluggy, []}
     ]
   end
@@ -24,9 +23,9 @@ defmodule Pluggy.MixProject do
   def deps do
     [
       {:neotoma, "~> 1.7.3", manager: :rebar3, override: true},
-      {:plug_cowboy, "~> 2.5.2"},
-      {:postgrex, "~> 0.16.4"},
-      {:bcrypt_elixir, "~> 3.0.1"},
+      {:plug_cowboy, "~> 2.7.1"},
+      {:postgrex, "~> 0.19.1"},
+      {:bcrypt_elixir, "~> 3.1.0"},
     ]
   end
 end
