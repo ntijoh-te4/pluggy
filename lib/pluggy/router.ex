@@ -2,23 +2,18 @@ defmodule Pluggy.Router do
   use Plug.Router
   use Plug.Debugger
 
-
   alias Pluggy.FruitController
   alias Pluggy.UserController
-
-
 
   plug(Plug.Static, at: "/", from: :pluggy)
   plug(:put_secret_key_base)
 
   plug(Plug.Session,
     store: :cookie,
-    key: "_pluggy_session",
+    key: "_my_app_session",
     encryption_salt: "cookie store encryption salt",
     signing_salt: "cookie store signing salt",
-    key_length: 64,
-    log: :debug,
-    secret_key_base: "-- LONG STRING WITH AT LEAST 64 BYTES -- LONG STRING WITH AT LEAST 64 BYTES --"
+    log: :debug
   )
 
   plug(:fetch_session)
