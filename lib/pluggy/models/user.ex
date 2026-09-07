@@ -4,9 +4,7 @@ defmodule Pluggy.User do
   alias Pluggy.User
 
   def get(id) do
-    Postgrex.query!(DB, "SELECT id, username FROM users WHERE id = $1 LIMIT 1", [id],
-      pool: DBConnection.ConnectionPool
-    ).rows
+    Postgrex.query!(DB, "SELECT id, username FROM users WHERE id = $1 LIMIT 1", [id]).rows
     |> to_struct
   end
 

@@ -8,9 +8,7 @@ defmodule Pluggy.UserController do
 
     # Bör antagligen flytta SQL-anropet till user-model (t.ex User.find)
     result =
-      Postgrex.query!(DB, "SELECT id, password_hash FROM users WHERE username = $1", [username],
-        pool: DBConnection.ConnectionPool
-      )
+      Postgrex.query!(DB, "SELECT id, password_hash FROM users WHERE username = $1", [username])
 
     case result.num_rows do
       # no user with that username
@@ -42,7 +40,7 @@ defmodule Pluggy.UserController do
   # 	#pseudocode
   # 	# in db table users with password_hash CHAR(60)
   # 	# hashed_password = Bcrypt.hash_pwd_salt(params["password"])
-  #  	# Postgrex.query!(DB, "INSERT INTO users (username, password_hash) VALUES ($1, $2)", [params["username"], hashed_password], [pool: DBConnection.ConnectionPool])
+  #  	# Postgrex.query!(DB, "INSERT INTO users (username, password_hash) VALUES ($1, $2)", [params["username"], hashed_password])
   #  	# redirect(conn, "/fruits")
   # end
 
