@@ -1,5 +1,5 @@
 defmodule Pluggy.Fruit do
-  defstruct(id: nil, name: "", tastiness: "")
+  defstruct(id: nil, name: "", tastiness: 0)
 
   alias Pluggy.Fruit
 

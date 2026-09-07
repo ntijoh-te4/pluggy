@@ -11,4 +11,7 @@ defmodule Pluggy.User do
   def to_struct([[id, username]]) do
     %User{id: id, username: username}
   end
+
+  # no user with that id (e.g. session cookie left over after "mix seed")
+  def to_struct([]), do: nil
 end

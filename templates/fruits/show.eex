@@ -1,7 +1,7 @@
 <h1>Fruits.show (/fruits/<%= fruit.id %>)</h1>
 
 <h2>
-	<a href="/fruits/<%= fruit.id %>/edit"><%= fruit.name %></a>
+	<a href="/fruits/<%= fruit.id %>/edit"><%= html_escape(fruit.name) %></a>
 	<form action="/fruits/<%= fruit.id %>/destroy" method="post">
 		<button type="submit">Destroy Fruit</button>
 	</form>	

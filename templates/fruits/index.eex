@@ -9,7 +9,7 @@
 <form action="/users/login" method="post">
 	<label for="username">Username</label>
 	<input type="text" name="username" id="username" />
-	<label for="password">Password</lagel>
+	<label for="password">Password</label>
 	<input type="password" name="pwd" id="password" />
 	<button type="submit">Log In</button>
 </form>
@@ -21,7 +21,7 @@
   <%= for fruit <- fruits do %>
     <li>
     	<a href="/fruits/<%= fruit.id %>">
-			<%= fruit.name %> - <%= fruit.tastiness %>
+			<%= html_escape(fruit.name) %> - <%= fruit.tastiness %>
 		</a>
 	</li>
   <% end %>

@@ -4,7 +4,8 @@ defmodule Pluggy.UserController do
 
   def login(conn, params) do
     username = params["username"]
-    password = params["pwd"]
+    # missing field -> empty string, so verify_pass gets a binary and simply returns false
+    password = params["pwd"] || ""
 
     # Bör antagligen flytta SQL-anropet till user-model (t.ex User.find)
     result =
@@ -13,6 +14,9 @@ defmodule Pluggy.UserController do
     case result.num_rows do
       # no user with that username
       0 ->
+        # run a dummy hash so this branch takes as long as a real check
+        # (otherwise response time reveals which usernames exist)
+        Bcrypt.no_user_verify()
         redirect(conn, "/fruits")
 
       # user with that username exists

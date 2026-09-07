@@ -22,7 +22,6 @@ defmodule Pluggy.MixProject do
   # Run "mix help deps" to learn about dependencies.
   def deps do
     [
-      {:neotoma, "~> 1.7.3", manager: :rebar3, override: true},
       {:bandit, "~> 1.12"},
       {:postgrex, "~> 0.22"},
       {:bcrypt_elixir, "~> 3.3.2"}

@@ -20,13 +20,13 @@ defmodule Mix.Tasks.Seed do
 
     Postgrex.query!(
       DB,
-      "Create TABLE fruits (id SERIAL, name VARCHAR(255) NOT NULL, tastiness INTEGER NOT NULL)",
+      "CREATE TABLE fruits (id SERIAL PRIMARY KEY, name VARCHAR(255) NOT NULL, tastiness INTEGER NOT NULL)",
       []
     )
 
     Postgrex.query!(
       DB,
-      "Create TABLE users (id SERIAL, username VARCHAR(255) NOT NULL, password_hash CHAR(72) NOT NULL)",
+      "CREATE TABLE users (id SERIAL PRIMARY KEY, username VARCHAR(255) NOT NULL UNIQUE, password_hash VARCHAR(60) NOT NULL)",
       []
     )
   end

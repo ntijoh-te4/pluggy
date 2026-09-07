@@ -1,7 +1,0 @@
-doctype html
-html
-    head
-        title Welcome to Pluggy
-        link rel="stylesheet" type="text/css" href="/pluggy.css"
-    body
-    = template

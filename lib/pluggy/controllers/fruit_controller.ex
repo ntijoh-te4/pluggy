@@ -27,9 +27,13 @@ defmodule Pluggy.FruitController do
 
     case params["file"] do
       # do nothing
-      nil -> IO.puts("No file uploaded")
-      # move uploaded file from tmp-folder
-      _ -> File.rename(params["file"].path, "priv/static/uploads/#{params["file"].filename}")
+      nil ->
+        IO.puts("No file uploaded")
+
+      # copy uploaded file out of the tmp-folder (Plug deletes the tmp file after the request)
+      %Plug.Upload{path: path, filename: filename} ->
+        # Path.basename strips any directory part the client may have sent (../../ etc)
+        File.cp!(path, "priv/static/uploads/#{Path.basename(filename)}")
     end
 
     redirect(conn, "/fruits")
