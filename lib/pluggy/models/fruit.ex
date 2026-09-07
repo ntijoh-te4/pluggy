@@ -9,8 +9,7 @@ defmodule Pluggy.Fruit do
   end
 
   def get(id) do
-    Postgrex.query!(DB, "SELECT * FROM fruits WHERE id = $1 LIMIT 1", [String.to_integer(id)]
-    ).rows
+    Postgrex.query!(DB, "SELECT * FROM fruits WHERE id = $1 LIMIT 1", [String.to_integer(id)]).rows
     |> to_struct
   end
 
