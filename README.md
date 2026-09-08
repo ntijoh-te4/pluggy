@@ -24,7 +24,7 @@ För att hämta docker-imagen från docker hub: `docker pull postgres`
 
 När docker-imagen är nedladdad kan du starta containern genom
 
-`docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres`
+`docker run --name pg-test -e POSTGRES_PASSWORD=docker -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql postgres`
 
 Följande växlar skickades till `docker run`:
 
