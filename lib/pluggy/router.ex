@@ -18,6 +18,9 @@ defmodule Pluggy.Router do
 
   plug(:fetch_session)
   plug(Plug.Parsers, parsers: [:urlencoded, :multipart])
+  # Without a content-type Firefox downloads the html instead of rendering it.
+  # Plug.Static runs before this and sets its own type for css, images etc.
+  plug(:put_html_content_type)
   plug(:match)
   plug(:dispatch)
 
@@ -42,6 +45,8 @@ defmodule Pluggy.Router do
   match _ do
     send_resp(conn, 404, "oops")
   end
+
+  defp put_html_content_type(conn, _), do: put_resp_content_type(conn, "text/html")
 
   defp put_secret_key_base(conn, _) do
     put_in(
